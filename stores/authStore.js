@@ -2,10 +2,7 @@ import { decorate, observable } from "mobx";
 import axios from "axios";
 import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
-
-const instance = axios.create({
-  baseURL: "http://192.168.100.154:80"
-});
+import { instance } from "./instance";
 
 class AuthStore {
   user = null;
@@ -33,7 +30,7 @@ class AuthStore {
       const user = res.data;
       await this.setUser(user.access);
     } catch (err) {
-      console.error(err);
+      console.log(err);
       alert("Invalid login credentials.");
     }
   };
