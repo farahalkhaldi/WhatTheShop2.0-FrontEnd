@@ -6,7 +6,7 @@ class CartStore {
 
   addItemToCart = item => {
     const existingItem = this.items.find(
-      obj => obj.drink === item.drink && obj.option === item.option
+      obj => obj.swalef === item.swalef && obj.option === item.swalef
     );
     if (existingItem) {
       existingItem.quantity += item.quantity;

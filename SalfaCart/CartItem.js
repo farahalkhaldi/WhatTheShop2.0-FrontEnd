@@ -13,7 +13,7 @@ const CartItem = ({ item }) => {
   return (
     <ListItem style={styles.listStyle}>
       <Left>
-        <Text style={styles.drink}> {item.drink} </Text>
+        <Text style={styles.swalef}> {item.swalef} </Text>
         <Text note style={styles.option}>
           {item.option}
         </Text>
