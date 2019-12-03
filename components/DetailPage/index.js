@@ -22,10 +22,10 @@ import styles from "./styles";
 import infoStore from "../../stores/infoStore";
 import CartButton from "../Buttons/CartButton";
 
-//import Emoji from "./Emoji";
+import Emoji from "./Emoji";
 
 //Store
-// import cartStore from "../../store/cartStore";
+import cartStore from "../../stores/cartStore";
 
 class SalfaDetail extends Component {
   render() {
@@ -49,8 +49,15 @@ class SalfaDetail extends Component {
                 <Text style={styles.price}>Price: {thesalfa.price} KWD</Text>
               </Right>
               <Left>
-                <Button style={styles.addButton}>
-                  <Text>buy</Text>
+                <Button
+                  full
+                  style={styles.addButton}
+                  onPress={() => {
+                    cartStore.addItemToCart(this.state);
+                    cartStore.sumCart(this.state);
+                  }}
+                >
+                  <Text>أشتريني</Text>
                 </Button>
               </Left>
             </CardItem>
