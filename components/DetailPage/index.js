@@ -46,7 +46,7 @@ class SalfaDetail extends Component {
 
             <CardItem>
               <Right>
-                <Text style={styles.price}>Price: 0.250 KWD</Text>
+                <Text style={styles.price}>Price: {thesalfa.price} KWD</Text>
               </Right>
               <Left>
                 <Button style={styles.addButton}>

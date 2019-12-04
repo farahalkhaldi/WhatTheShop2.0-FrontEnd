@@ -16,7 +16,7 @@ const SalfaItem = ({ salfa, navigation }) => {
     });
 
   return (
-    <ImageBackground source={salfa.img} style={styles.background}>
+    <ImageBackground source={{ uri: salfa.img }} style={styles.background}>
       <View style={styles.overlay} />
       <ListItem button onPress={handlePress} style={styles.listitem}>
         <Card style={styles.transparent}>
