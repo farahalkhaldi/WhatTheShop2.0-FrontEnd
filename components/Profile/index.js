@@ -13,10 +13,6 @@ import Logout from "../Buttons/Logout";
 const Profile = () => {
   return (
     <Card>
-      {/* //     <CardItem>
-    //       <Text>blalala</Text>
-    //     </CardItem> */}
-
       <Logout />
     </Card>
   );

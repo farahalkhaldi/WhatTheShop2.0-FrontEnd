@@ -8,7 +8,6 @@ import DetailPage from "../components/DetailPage";
 const ProfileStack = createStackNavigator(
   {
     Profile: ProfileScreen,
-    Login: LoginScreen,
     DetailScreen: DetailPage
   },
   {

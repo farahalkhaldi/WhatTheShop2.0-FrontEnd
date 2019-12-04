@@ -18,7 +18,7 @@ class AuthStore {
       this.user = jwt_decode(token);
     } else {
       await AsyncStorage.removeItem("myToken");
-      delete axios.defaults.headers.common.Authorization;
+      delete instance.defaults.headers.common.Authorization;
       this.user = null;
     }
     console.log(this.user);
@@ -33,7 +33,6 @@ class AuthStore {
     } catch (err) {
       // console.error(err);
       alert("اكتب البيانات صح!!");
-
     }
   };
 
@@ -66,7 +65,7 @@ class AuthStore {
         // Set auth token header
         this.setUser(token);
       } else {
-        this.logout();
+        this.setUser();
       }
     }
   };
