@@ -24,29 +24,33 @@ class AuthStore {
     console.log(this.user);
   };
 
-  login = async userData => {
+  login = async (userData, navigation) => {
     try {
       const res = await instance.post("/api/login/", userData);
       const user = res.data;
       await this.setUser(user.access);
+      navigation.navigate("LolStack");
     } catch (err) {
-      console.log(err);
-      alert("Invalid login credentials.");
+      // console.error(err);
+      alert("اكتب البيانات صح!!");
+
     }
   };
 
-  signup = async userData => {
+  signup = async (userData, navigation) => {
     try {
       const res = await instance.post("/api/register/", userData);
-      const user = res.data;
-      await this.setUser(user.access);
+      this.login(userData, navigation);
+      navigation.navigate("LolStack");
     } catch (err) {
-      console.error(err);
+      // console.error(err);
+      alert("اكتب البيانات صح!!");
     }
   };
 
   logout = async navigation => {
     await this.setUser();
+    navigation.navigate("Login");
   };
 
   checkForToken = async () => {

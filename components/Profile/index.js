@@ -1,20 +1,27 @@
 import React from "react";
 
+import { observer } from "mobx-react";
+import { withNavigation } from "react-navigation";
+
 // NativeBase Components
-import { Card, CardItem, Text, Button } from "native-base";
+import { Card } from "native-base";
+
+import authStore from "../../stores/authStore";
+
+import Logout from "../Buttons/Logout";
 
 const Profile = () => {
   return (
     <Card>
-      <CardItem>
-        <Button
-          danger
-          onPress={() => alert("You need to implement Logout n00b...hehehe")}
-        >
-          <Text>Logout</Text>
-        </Button>
-      </CardItem>
+      {/* //     <CardItem>
+    //       <Text>blalala</Text>
+    //     </CardItem> */}
+
+      <Logout />
     </Card>
   );
 };
-export default Profile;
+Profile.navigationOptions = {
+  title: "Profile"
+};
+export default observer(Profile);

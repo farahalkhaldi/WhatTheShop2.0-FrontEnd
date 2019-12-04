@@ -36,10 +36,7 @@ class Login extends Component {
         />
         <TouchableOpacity
           style={styles.authButton}
-          onPress={() => {
-            authStore.login(this.state);
-            this.props.navigation.navigate("LolScreen");
-          }}
+          onPress={() => authStore.login(this.state, this.props.navigation)}
         >
           <Text style={styles.authButtonText}>Log in</Text>
         </TouchableOpacity>
