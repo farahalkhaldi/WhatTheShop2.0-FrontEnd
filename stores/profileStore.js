@@ -9,8 +9,7 @@ class ProfileStore {
   fetchProfile = async () => {
     try {
       const res = await instance.get("/api/profile/");
-      const profile = res.data;
-      this.profile = profile;
+      this.profile = res.data;
       this.loading = false;
     } catch (err) {
       console.error(err);
@@ -24,5 +23,4 @@ decorate(ProfileStore, {
 });
 
 const profileStore = new ProfileStore();
-profileStore.fetchProfile();
-export default ProfileStore;
+export default profileStore;

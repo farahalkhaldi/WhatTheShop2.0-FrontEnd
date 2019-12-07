@@ -1,28 +1,3 @@
-// import React from "react";
-
-// import { observer } from "mobx-react";
-// import { withNavigation } from "react-navigation";
-
-// // NativeBase Components
-// import { Card } from "native-base";
-
-// // Store
-// import ProfileStore from "../../stores/profileStore";
-// import authStore from "../../stores/authStore";
-
-// //Component
-// import Logout from "../Buttons/Logout";
-
-// const Profile = () => {
-//   return <Card></Card>;
-// };
-// Profile.navigationOptions = {
-//   title: "Profile",
-//   headerLeft: <Logout />
-
-// };
-// export default observer(Profile);
-
 import React, { Component } from "react";
 
 import { observer } from "mobx-react";
@@ -45,31 +20,28 @@ import {
 import styles from "./styles";
 
 // Store
-import ProfileStore from "../../stores/profileStore";
+import profileStore from "../../stores/profileStore";
 
 //Component
 import Logout from "../Buttons/Logout";
+import { withNavigation } from "react-navigation";
+import authStore from "../../stores/authStore";
 
 class Profile extends Component {
+  async componentDidMount() {
+    if (authStore.user) {
+      await profileStore.fetchProfile();
+    }
+  }
   render() {
-    const userID = this.props.navigation.getParam("userID");
-    const theProfile = ProfileStore.profile.find(
-      theProfile => userID === theProfile.id
-    );
-
     return (
-      <Container>
-        <Content>
-          <Card>
-            <CardItem>
-              <Body>
-                <Text style={styles.text}>{theProfile.first_name}</Text>
-                <Text style={styles.text}>{theProfile.last_name}</Text>
-              </Body>
-            </CardItem>
-          </Card>
-        </Content>
-      </Container>
+      <>
+        <Text style={styles.text}>
+          testtttt {profileStore.profile.first_name}
+        </Text>
+        <Text style={styles.text}>{profileStore.profile.last_name}</Text>
+        <Text style={styles.text}>{profileStore.profile.username}</Text>
+      </>
     );
   }
 }
@@ -79,4 +51,4 @@ Profile.navigationOptions = {
   headerLeft: <Logout />
 };
 
-export default observer(Profile);
+export default withNavigation(observer(Profile));
