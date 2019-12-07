@@ -3,18 +3,7 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import {
-  Body,
-  Button,
-  Card,
-  CardItem,
-  Container,
-  Content,
-  Left,
-  Right,
-  Text,
-  Header
-} from "native-base";
+import { Text, Container, Card } from "native-base";
 
 // Style
 import styles from "./styles";
@@ -35,13 +24,15 @@ class Profile extends Component {
   }
   render() {
     return (
-      <>
+      <Card>
         <Text style={styles.text}>
-          testtttt {profileStore.profile.first_name}
+          First name: {profileStore.profile.first_name}
         </Text>
-        <Text style={styles.text}>{profileStore.profile.last_name}</Text>
-        <Text style={styles.text}>{profileStore.profile.username}</Text>
-      </>
+        <Text style={styles.text}>
+          Last name: {profileStore.profile.last_name}
+        </Text>
+        <Text style={styles.text}>Email: {profileStore.profile.email}</Text>
+      </Card>
     );
   }
 }

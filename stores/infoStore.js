@@ -25,5 +25,4 @@ decorate(InfoStore, {
 
 const infoStore = new InfoStore();
 infoStore.fetchAllSwalefs();
-console.log("SOWALIF", this.swalef);
 export default infoStore;

@@ -2,7 +2,7 @@ import { decorate, observable, computed } from "mobx";
 import { instance } from "./instance";
 
 class ProfileStore {
-  loading = true;
+  // loading = true;
 
   profile = [];
 
@@ -10,7 +10,6 @@ class ProfileStore {
     try {
       const res = await instance.get("/api/profile/");
       this.profile = res.data;
-      this.loading = false;
     } catch (err) {
       console.error(err);
     }
