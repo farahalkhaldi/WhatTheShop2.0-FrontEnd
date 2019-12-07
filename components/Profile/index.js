@@ -1,23 +1,45 @@
-import React from "react";
+import React, { Component } from "react";
 
 import { observer } from "mobx-react";
-import { withNavigation } from "react-navigation";
 
 // NativeBase Components
-import { Card } from "native-base";
+import { Text, Container, Card } from "native-base";
 
+// Style
+import styles from "./styles";
+
+// Store
+import profileStore from "../../stores/profileStore";
+
+//Component
+import Logout from "../Buttons/Logout";
+import { withNavigation } from "react-navigation";
 import authStore from "../../stores/authStore";
 
-import Logout from "../Buttons/Logout";
+class Profile extends Component {
+  async componentDidMount() {
+    if (authStore.user) {
+      await profileStore.fetchProfile();
+    }
+  }
+  render() {
+    return (
+      <Card>
+        <Text style={styles.text}>
+          First name: {profileStore.profile.first_name}
+        </Text>
+        <Text style={styles.text}>
+          Last name: {profileStore.profile.last_name}
+        </Text>
+        <Text style={styles.text}>Email: {profileStore.profile.email}</Text>
+      </Card>
+    );
+  }
+}
 
-const Profile = () => {
-  return (
-    <Card>
-      <Logout />
-    </Card>
-  );
-};
 Profile.navigationOptions = {
-  title: "Profile"
+  title: "Profile",
+  headerLeft: <Logout />
 };
-export default observer(Profile);
+
+export default withNavigation(observer(Profile));
