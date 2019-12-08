@@ -7,7 +7,11 @@ import { observer } from "mobx-react";
 const CartButton = ({ navigation }) => {
   return (
     <Text>
-      <Icon name="cart" type="EvilIcons" />
+      <Icon
+        name="cart"
+        type="EvilIcons"
+        onPress={() => navigation.navigate("CartScreen")}
+      />
     </Text>
   );
 };
