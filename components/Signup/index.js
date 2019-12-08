@@ -13,7 +13,8 @@ class Signup extends Component {
     username: "",
     password: "",
     first_name: "",
-    last_name: ""
+    last_name: "",
+    email: ""
   };
 
   componentDidMount() {
@@ -40,6 +41,12 @@ class Signup extends Component {
           style={styles.authTextInput}
           placeholder="Username"
           onChangeText={username => this.setState({ username })}
+          placeholderTextColor="#A6AEC1"
+        />
+        <TextInput
+          style={styles.authTextInput}
+          placeholder="Email"
+          onChangeText={email => this.setState({ email })}
           placeholderTextColor="#A6AEC1"
         />
         <TextInput

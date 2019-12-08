@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import { Text, Container, Card } from "native-base";
+import { Text, Body, Container, Card, CardItem } from "native-base";
 
 // Style
 import styles from "./styles";
@@ -24,15 +24,32 @@ class Profile extends Component {
   }
   render() {
     return (
-      <Card>
-        <Text style={styles.text}>
-          First name: {profileStore.profile.first_name}
-        </Text>
-        <Text style={styles.text}>
-          Last name: {profileStore.profile.last_name}
-        </Text>
-        <Text style={styles.text}>Email: {profileStore.profile.email}</Text>
-      </Card>
+      <Container>
+        <Card>
+          <CardItem>
+            <Body>
+              <Text style={styles.text}>
+                Welcome {profileStore.profile.first_name}{" "}
+                {profileStore.profile.last_name} to your Swalif app profile.
+              </Text>
+
+              <Text style={styles.text}>
+                Username: {profileStore.profile.username}
+              </Text>
+              <Text style={styles.text}>
+                Email: {profileStore.profile.email}
+              </Text>
+            </Body>
+          </CardItem>
+          <>
+            <Card>
+              <CardItem>
+                <Text>le order history</Text>
+              </CardItem>
+            </Card>
+          </>
+        </Card>
+      </Container>
     );
   }
 }
