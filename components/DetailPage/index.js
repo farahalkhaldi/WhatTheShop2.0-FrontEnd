@@ -25,11 +25,12 @@ import CartButton from "../Buttons/CartButton";
 //import Emoji from "./Emoji";
 
 //Store
-// import cartStore from "../../store/cartStore";
+import cartStore from "../../stores/cartStore";
 
 class SalfaDetail extends Component {
   render() {
     const salfaID = this.props.navigation.getParam("salfaID");
+    console.log("salfaID", salfaID);
     const thesalfa = infoStore.swalef.find(thesalfa => salfaID === thesalfa.id);
     return (
       <Container>
@@ -49,7 +50,12 @@ class SalfaDetail extends Component {
                 <Text style={styles.price}>Price: {thesalfa.price} KWD</Text>
               </Right>
               <Left>
-                <Button style={styles.addButton}>
+                <Button
+                  style={styles.addButton}
+                  onPress={() => {
+                    cartStore.addItemToCart(salfaID);
+                  }}
+                >
                   <Text>buy</Text>
                 </Button>
               </Left>

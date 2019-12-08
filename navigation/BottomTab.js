@@ -18,8 +18,8 @@ const BottomTab = createBottomTabNavigator(
         const { routeName } = navigation.state;
         let iconName;
         if (routeName === "LolTab") {
-          iconName = "smiley";
-          iconType = "Octicons";
+          iconName = "chat";
+          iconType = "MaterialIcons";
         } else if (routeName === "ProfileTab") {
           iconName = "person";
           iconType = "MaterialIcons";
@@ -31,10 +31,10 @@ const BottomTab = createBottomTabNavigator(
     }),
     tabBarOptions: {
       showLabel: false,
-      activeTintColor: "#6200EE",
-      inactiveTintColor: "#858585",
+      activeTintColor: "white",
+      inactiveTintColor: "#8c8a82",
       style: {
-        backgroundColor: "white"
+        backgroundColor: "#e6b800"
       },
       labelStyle: {
         fontSize: 12
