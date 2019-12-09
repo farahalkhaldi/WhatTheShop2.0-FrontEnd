@@ -10,6 +10,8 @@ class OrderStore {
     try {
       const res = await instance.get("/api/profile/");
       this.history = res.data;
+      console.log("hehehehehehelooool", this.history.carts);
+      console.log("kaaaaaaaaaaaaaak", this.history.carts[0]);
       this.loading = false;
     } catch (err) {
       console.error(err);
@@ -18,7 +20,7 @@ class OrderStore {
 }
 
 decorate(OrderStore, {
-  profile: observable,
+  history: observable,
   loading: observable
 });
 

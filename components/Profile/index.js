@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import { Text, Body, Container, Card, CardItem } from "native-base";
+import { Text, Body, Container, Card, CardItem, Spinner } from "native-base";
 
 // Style
 import styles from "./styles";
@@ -22,9 +22,13 @@ class Profile extends Component {
   async componentDidMount() {
     if (authStore.user) {
       await profileStore.fetchProfile();
+      await orderStore.fetchHistory();
     }
   }
   render() {
+    if (profileStore.loading || orderStore.loading) return <Spinner />;
+    let leHistory = orderStore.history.carts[0].salfa[0];
+
     return (
       <Container>
         <Card>
@@ -46,7 +50,10 @@ class Profile extends Component {
           <>
             <Card>
               <CardItem>
-                <Text>le order history: {orderStore.history.salfa}</Text>
+                <Text style={styles.text}>
+                  le order history: {leHistory.name} {leHistory.type}{" "}
+                  {leHistory.price} {"\n"} {leHistory.description}
+                </Text>
               </CardItem>
             </Card>
           </>
