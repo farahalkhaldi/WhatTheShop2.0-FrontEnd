@@ -10,11 +10,13 @@ import styles from "./styles";
 
 // Store
 import profileStore from "../../stores/profileStore";
+import authStore from "../../stores/authStore";
+import orderStore from "../../stores/orderStore";
 
 //Component
 import Logout from "../Buttons/Logout";
+import CartButton from "../Buttons/CartButton";
 import { withNavigation } from "react-navigation";
-import authStore from "../../stores/authStore";
 
 class Profile extends Component {
   async componentDidMount() {
@@ -44,7 +46,7 @@ class Profile extends Component {
           <>
             <Card>
               <CardItem>
-                <Text>le order history</Text>
+                <Text>le order history: {orderStore.history.salfa}</Text>
               </CardItem>
             </Card>
           </>
@@ -56,7 +58,8 @@ class Profile extends Component {
 
 Profile.navigationOptions = {
   title: "Profile",
-  headerLeft: <Logout />
+  headerLeft: <Logout />,
+  headerRight: <CartButton />
 };
 
 export default withNavigation(observer(Profile));
