@@ -53,7 +53,7 @@ class SalfaDetail extends Component {
                 <Button
                   style={styles.addButton}
                   onPress={() => {
-                    cartStore.addItemToCart(salfaID);
+                    cartStore.addItemToCart(thesalfa);
                   }}
                 >
                   <Text>buy</Text>
