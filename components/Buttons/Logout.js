@@ -7,12 +7,7 @@ import { withNavigation } from "react-navigation";
 import AuthStore from "../../stores/authStore";
 const Logout = ({ navigation }) => {
   return (
-    <Button
-      rounded
-      bordered
-      danger
-      onPress={() => AuthStore.logout(navigation)}
-    >
+    <Button rounded bordered Light onPress={() => AuthStore.logout(navigation)}>
       <Text>Logout</Text>
     </Button>
   );
