@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   addButton: {
     marginLeft: 80,
-    backgroundColor: "#f75a54"
+    backgroundColor: "#8c8a82"
   },
 
   price: { fontWeight: "bold" },
