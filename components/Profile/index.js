@@ -36,28 +36,25 @@ class Profile extends Component {
   }
 
   checkHistory() {
-    const leHistory = orderStore.history.carts.map(cart => (
-      <>
-        <Text>{cart.name}</Text>
-        <List>
-          {cart.salfa.map(salfa => (
-            <ListItem>
-              <Text style={styles.text}>
-                le order history: {salfa.name}
-                {salfa.type} {salfa.price} {"\n"} {salfa.description}{" "}
-              </Text>
-            </ListItem>
-          ))}
-        </List>
-      </>
-    ));
+    const leHistory = orderStore.history.carts.map(cart => {
+      if (cart.salfa.length > 1) {
+        return (
+          <List>
+            {cart.salfa.map(salfa => (
+              <ListItem>
+                <Text style={styles.text}>
+                  le order history: {salfa.name}
+                  {salfa.type} {salfa.price} {"\n"} {salfa.description}{" "}
+                </Text>
+              </ListItem>
+            ))}
+          </List>
+        );
+      } else {
+        return <Text style={styles.text}>ما عندك سالفة, بوووووو!! </Text>;
+      }
+    });
     return leHistory;
-
-    // if (leHistory.salfa !== 0) {
-    //   return leHistory
-    // } else {
-    //   return <Text style={styles.text}>ما عندك سالفة, بوووووو!! </Text>;
-    // }
   }
   render() {
     if (profileStore.loading || orderStore.loading) return <Spinner />;
