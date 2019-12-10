@@ -3,7 +3,16 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import { Text, Body, Container, Card, CardItem, Spinner } from "native-base";
+import {
+  Text,
+  Body,
+  Container,
+  Card,
+  CardItem,
+  Spinner,
+  ListItem,
+  List
+} from "native-base";
 
 // Style
 import styles from "./styles";
@@ -25,9 +34,30 @@ class Profile extends Component {
       await orderStore.fetchHistory();
     }
   }
+
+  checkHistory() {
+    const leHistory = orderStore.history.carts.map(cart => {
+      if (cart.salfa.length > 1) {
+        return (
+          <List>
+            {cart.salfa.map(salfa => (
+              <ListItem>
+                <Text style={styles.text}>
+                  le order history: {salfa.name}
+                  {salfa.type} {salfa.price} {"\n"} {salfa.description}{" "}
+                </Text>
+              </ListItem>
+            ))}
+          </List>
+        );
+      } else {
+        return <Text style={styles.text}>ما عندك سالفة, بوووووو!! </Text>;
+      }
+    });
+    return leHistory;
+  }
   render() {
     if (profileStore.loading || orderStore.loading) return <Spinner />;
-    let leHistory = orderStore.history.carts[0].salfa[0];
 
     return (
       <Container>
@@ -47,22 +77,14 @@ class Profile extends Component {
               </Text>
             </Body>
           </CardItem>
-          <>
-            <Card>
-              <CardItem>
-                <Text style={styles.text}>
-                  le order history: {leHistory.name} {leHistory.type}{" "}
-                  {leHistory.price} {"\n"} {leHistory.description}
-                </Text>
-              </CardItem>
-            </Card>
-          </>
+        </Card>
+        <Card>
+          <CardItem>{this.checkHistory()}</CardItem>
         </Card>
       </Container>
     );
   }
 }
-
 Profile.navigationOptions = {
   title: "Profile",
   headerLeft: <Logout />,
