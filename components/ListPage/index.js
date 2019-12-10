@@ -23,7 +23,7 @@ const SwalefList = () => {
 };
 
 SwalefList.navigationOptions = {
-  title: "بياع حجي",
+  title: "شالـسالـفة ؟!",
   headerRight: <CartButton />
 };
 
