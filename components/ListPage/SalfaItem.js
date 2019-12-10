@@ -22,8 +22,11 @@ const SalfaItem = ({ salfa, navigation }) => {
         <Card style={styles.transparent}>
           <CardItem style={styles.transparent}>
             <Left>
-              <Text style={styles.text}>{salfa.name + "\n"} </Text>
-              <Text style={styles.text2}>{salfa.type}</Text>
+              <Text style={styles.text}>
+                {" "}
+                {"-"} {salfa.name}
+              </Text>
+              <Text style={styles.text2}> {salfa.type}</Text>
             </Left>
           </CardItem>
         </Card>

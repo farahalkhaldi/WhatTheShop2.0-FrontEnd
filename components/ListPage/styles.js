@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     opacity: 1
   },
   text2: {
-    color: "gray",
+    color: "#b8b7b0",
     fontSize: 15,
     fontWeight: "normal",
     opacity: 1

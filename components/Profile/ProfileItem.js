@@ -2,13 +2,11 @@ import React from "react";
 import { withNavigation } from "react-navigation";
 import { ImageBackgournd, View } from "react-native";
 
-
 // NativeBase Components
 import { ListItem, Card, CardItem, Thumbnail, Text, Left } from "native-base";
 
 // Style
 import styles from "./styles";
-
 
 // const UserProfile = ({ profile, navigation }) => {
 //     const handlePress = () =>
@@ -29,7 +27,6 @@ import styles from "./styles";
 //             </Card>
 //           </ListItem>
 //       );
-    };
-    
-    export default withNavigation(UserProfile);
-    
+// };
+
+export default withNavigation(UserProfile);
