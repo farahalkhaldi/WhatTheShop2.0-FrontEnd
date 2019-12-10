@@ -11,7 +11,8 @@ import {
   CardItem,
   Spinner,
   ListItem,
-  List
+  List,
+  Content
 } from "native-base";
 
 // Style
@@ -36,26 +37,27 @@ class Profile extends Component {
   }
 
   checkHistory() {
-    const leHistory = orderStore.history.carts.map(cart => {
-      if (cart.salfa.length > 1) {
-        return (
-          <List>
-            {cart.salfa.map(salfa => (
-              <ListItem>
+    if (orderStore.history.carts.length > 1) {
+      return orderStore.history.carts.map(cart => (
+        <>
+          {cart.salfa.map(salfa => (
+            <List>
+              <Card>
                 <Text style={styles.text}>
-                  le order history: {salfa.name}
-                  {salfa.type} {salfa.price} {"\n"} {salfa.description}{" "}
+                  اسم سالفتك: {salfa.name}
+                  {"\n\n"}
+                  {salfa.description}
                 </Text>
-              </ListItem>
-            ))}
-          </List>
-        );
-      } else {
-        return <Text style={styles.text}>ما عندك سالفة, بوووووو!! </Text>;
-      }
-    });
-    return leHistory;
+              </Card>
+            </List>
+          ))}
+        </>
+      ));
+    } else {
+      return <Text style={styles.text}>ما عندك سالفة, بوووووو!! </Text>;
+    }
   }
+
   render() {
     if (profileStore.loading || orderStore.loading) return <Spinner />;
 
@@ -79,7 +81,7 @@ class Profile extends Component {
           </CardItem>
         </Card>
         <Card>
-          <CardItem>{this.checkHistory()}</CardItem>
+          <List>{this.checkHistory()}</List>
         </Card>
       </Container>
     );
